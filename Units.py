@@ -10,6 +10,7 @@ class _Unit:  # _ = implementation class
     def __init__(self, color, coords):
         self.color = color
         self.coords = coords
+        #self.img = img
 
     def intersects(self, pos):
         return self.coords[0] <= pos[0] <= self.coords[0] + self.coords[2] \
@@ -31,6 +32,7 @@ class _Unit:  # _ = implementation class
         self.color = color
 
     def drawon(self, screen, dt):
+        #screen.blit(self.img, self.getpos())
         pygame.draw.rect(screen, self.getcolor(), self.getcoords())
 
 
@@ -66,7 +68,7 @@ class Button(_Unit):
 
 
 class _MovingUnit(_Unit):
-    def __init__(self, color, coords, health, rnge, cost, speed, damage):
+    def __init__(self, color, coords, health, rnge, cost, speed, damage, reward):
         _Unit.__init__(self, color, coords)
         self.health = health
         self.range = rnge
@@ -83,19 +85,19 @@ class _MovingUnit(_Unit):
 
 class Melee(_MovingUnit):
     def __init__(self, color, coords, dir):
-        _MovingUnit.__init__(self, color, coords, 100, 1, 100, dir*20, 5)
+        _MovingUnit.__init__(self, color, coords, 100, 1, 100, dir*20, 5, 50)
 
 
 class Ranged(_MovingUnit):
     def __init__(self, color, coords, dir):
-        _MovingUnit.__init__(self, color, coords, 100, 1, 100, dir*20, 5)
+        _MovingUnit.__init__(self, color, coords, 100, 1, 100, dir*20, 5, 50)
 
 
 class Tank(_MovingUnit):
     def __init__(self, color, coords, dir):
-        _MovingUnit.__init__(self, color, coords, 100, 1, 100, dir*20, 5)
+        _MovingUnit.__init__(self, color, coords, 100, 1, 100, dir*20, 5, 50)
 
 
 class Recon(_MovingUnit):
     def __init__(self, color, coords, dir):
-        _MovingUnit.__init__(self, color, coords, 100, 1, 100, dir*20, 5)
+        _MovingUnit.__init__(self, color, coords, 100, 1, 100, dir*20, 5, 50)

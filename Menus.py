@@ -2,7 +2,6 @@ import pygame
 import sys
 from Constants import *
 
-
 class MenuItem(pygame.font.Font):
     def __init__(self, text, font=None, font_size=30, font_color=WHITE, pos=(0, 0)):
         pos_x = pos[0]
@@ -151,5 +150,3 @@ class GameMenu():
                 self.screen.blit(item.label, item.position)
 
             pygame.display.flip()
-
-
